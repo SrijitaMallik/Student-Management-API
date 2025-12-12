@@ -1,153 +1,153 @@
-## Student Management App – README
-# 📌 Overview
+# Student App – README
 
-This project is a simple Student Management Application built using:
+This is a simple Angular + .NET project where you can view and add students.
+It has two screens: Home (list of all students) and Add Student (form to add a new student).
 
-Frontend: Angular 17 (Standalone Components)
+## 1. Project Structure
 
-Backend: ASP.NET Core Web API
+Frontend folder structure:
 
-Data exchange: JSON
-
-Features:
-
-* Display all students
-* Add a new student (Reactive Form)
-* Show/hide fields based on class and hobby selection
-* API integration for GET and POST
-
-# 📁 Project Structure
 student-api/
   src/
     app/
       components/
-        add-student/
-          add-student.css
-          add-student.html
-          add-student.ts
-          add-student.spec.ts
         home/
-          home.css
-          home.html
           home.ts
+          home.html
+          home.css
           home.spec.ts
+        
+        add-student/
+          add-student.ts
+          add-student.html
+          add-student.css
+          add-student.spec.ts
+
       services/
         student.ts
         student.spec.ts
+
       app.config.server.ts
-  angular.json
-  package.json
-  tsconfig.json
 
-## 🚀 Backend Setup (ASP.NET Core API)
- ✔ Start the API
+## 2. Technologies Used
+* Frontend
 
- Open API folder in Visual Studio 2022
+Angular (Standalone Components)
 
- Run the project
+TypeScript
 
- Swagger URL example:
+HTML & CSS
 
- https://localhost:7298/swagger/index.html
+HttpClient for API calls
 
-# ✔ API Endpoints
-GET all students
-GET /api/Students
+Reactive Forms
 
-POST a new student
-POST /api/Students
+* Backend
 
-Example JSON
-{
-  "name": "Rahul Sharma",
-  "class": "7",
-  "gender": "Male",
-  "hobby": "Cricket",
-  "favouriteSubject": "Maths"
-}
+.NET 8 Web API
 
-## 🌐 Frontend Setup (Angular)
-✔ Install dependencies
+CORS enabled for Angular
 
-Open terminal inside student-api/:
+In-memory student list or database (optional)
+
+## 3. How to Run the Backend
+
+Open the API project in Visual Studio 2022
+
+Run the project
+
+Swagger will open at:
+
+https://localhost:7298/swagger/index.html
+
+
+The GET students URL:
+
+https://localhost:7298/api/Students
+
+
+Make sure the API is running before starting Angular.
+
+## 4. How to Run the Angular App
+
+Open terminal inside student-api folder:
 
 npm install
-
-✔ Start Angular app
-ng serve -o
+ng serve
 
 
-Default URL:
+Angular will open at:
 
-http://localhost:4200/
+http://localhost:4200
 
-📌 Angular Pages
-1️⃣ Home Page
+## 5. What the App Does
+Home Page
 
-Shows list of all students
+Fetches all students from .NET backend.
 
-Calls:
+Displays:
+
+Name
+
+Class
+
+Gender
+
+Hobby
+
+Favourite Subject
+
+Add Student Page
+
+Form with validations:
+
+Name (required, min 5 characters)
+
+Class (required)
+
+Gender (required)
+
+Optional hobby (visible only if checkbox is checked)
+
+Optional favourite subject
+
+On submit, the student is posted to backend.
+
+After saving, user is redirected back to Home.
+
+## 6. API Endpoints Used
+
+GET all students:
 
 GET https://localhost:7298/api/Students
 
-2️⃣ Add Student Page
 
-Reactive Form
+POST new student:
 
-Validations:
+POST https://localhost:7298/api/Students
 
-Name → Required, Min length 5
+## 7. Common Issues / Fixes
 
-Class → Required
+Refresh gives 404 error
+Fix → add this in app.config.ts and use proper routing setup.
 
-Gender → Required
+CORS error
+Fix → enable CORS in .NET Program.cs
 
-Conditional UI:
+Student list empty
+Cause → API not running
+Fix → Run .NET backend first.
 
-Show hobby input only when "Has Hobby" checked
+## 8. Running Both Together
 
-Class 6 → “Welcome to middle school!”
+Start the .NET backend
 
-Class 9 → “You will appear in board exams soon”
+Start Angular frontend
 
-On Save → Call POST API and return to Home
+Open browser → http://localhost:4200
 
-🔗 Angular Routes
-/               → HomeComponent
-/add-student    → AddStudentComponent
+Navigate:
 
-🛠 Commands Used During Development
-Purpose	Command
-Create Angular project	ng new student-api
-Create Home Component	ng g c components/home
-Create Add Student Component	ng g c components/add-student
-Create Service	ng g s services/student
-Run app	ng serve
-❗Common Issues & Fixes
-1. Refreshing Home page shows blank
+Home → see all students
 
-Solution: ensure correct base href in index.html:
-
-<base href="/">
-
-2. API not loading in Angular
-
-Check CORS in API:
-
-app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-
-3. SSL Port mismatch
-
-Ensure Angular service URL matches Swagger port:
-
-private apiUrl = 'https://localhost:7298/api/Students';
-
-4. Route errors
-
-Use standalone routing:
-
-export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'add-student', component: AddStudentComponent },
-  { path: '**', redirectTo: '' }
-];
+Add Student → submit form → redirect to home
