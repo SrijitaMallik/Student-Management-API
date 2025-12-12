@@ -1,10 +1,9 @@
-/* ======== COLOR SYSTEM ======== */
 :root {
   --bg-light: #eef4ff;
   --bg-light-2: #e6f0ff;
   --card: #ffffff;
-  --primary: #2563eb;       /* Deep Blue */
-  --primary-light: #3b82f6; /* Lighter Blue */
+  --primary: #2563eb;       
+  --primary-light: #3b82f6; 
   --text-dark: #0f172a;
   --muted: #6b7280;
 
@@ -13,21 +12,18 @@
   font-family: Inter, system-ui, -apple-system;
 }
 
-/* GLOBAL */
 body {
   margin: 0;
   background: linear-gradient(180deg, var(--bg-light), var(--bg-light-2));
   color: var(--text-dark);
 }
 
-/* ======== MAIN LAYOUT ======== */
 .app-layout {
   display: flex;
   min-height: 100vh;
   gap: 18px;
 }
 
-/* ======== SIDEBAR ======== */
 .sidebar {
   width: 230px;
   background: linear-gradient(180deg, #f0f6ff, #e0edff);
@@ -61,7 +57,6 @@ body {
   color: var(--primary);
 }
 
-/* Sidebar Links */
 .side-nav {
   margin-top: 20px;
   display: flex;
@@ -88,7 +83,6 @@ body {
   box-shadow: 0 6px 15px rgba(0,0,0,0.05);
 }
 
-/* ======== MAIN RIGHT CONTENT ======== */
 .main {
   flex: 1;
   padding: 32px;
@@ -103,7 +97,6 @@ body {
   color: var(--primary);
 }
 
-/* ======== STUDENT TABLE ======== */
 .card {
   width: 100%;
   background: var(--card);
@@ -131,7 +124,6 @@ body {
   border-bottom: 1px solid #e6e9f5;
 }
 
-/* Class Pill */
 .pill {
   background: #dbe7ff;
   color: #1e40af;
@@ -141,7 +133,6 @@ body {
   display: inline-block;
 }
 
-/* Subject Tag */
 .tag {
   background: #eff6ff;
   color: #1e3a8a;
@@ -150,7 +141,6 @@ body {
   font-weight: 600;
 }
 
-/* ======== FORM PAGE ======== */
 .input-box, select {
   width: 100%;
   padding: 14px;
@@ -166,7 +156,6 @@ body {
   background: #ffffff;
 }
 
-/* Buttons */
 .btn {
   padding: 12px 24px;
   border-radius: 12px;
