@@ -1,0 +1,71 @@
+<!-- src/app/components/add-student/add-student.html -->
+<div class="add-page">
+  <div class="form-wrap">
+    <h2 class="title">Add Student</h2>
+    <p class="subtitle">Fill details and click Save — responsive & clean</p>
+
+    <form [formGroup]="form" (ngSubmit)="save()" class="form-card" novalidate>
+      <div class="row">
+        <label>Name <span class="req">*</span></label>
+        <input formControlName="name" placeholder="Enter full name (min 5 chars)" />
+        <div class="err" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+          <span *ngIf="form.get('name')?.errors?.['required']">Required</span>
+          <span *ngIf="form.get('name')?.errors?.['minlength']">Min 5 chars</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <label>Class <span class="req">*</span></label>
+        <select formControlName="className" aria-label="Class">
+          <option value="">Select Class</option>
+          <option *ngFor="let c of classes" [value]="c">{{ c }}</option>
+        </select>
+        <div class="hint" *ngIf="form.get('className')?.touched || form.get('className')?.value">
+          {{ classMessage() }}
+        </div>
+        <div class="err" *ngIf="form.get('className')?.touched && form.get('className')?.invalid">
+          <span>Class is required</span>
+        </div>
+      </div>
+
+      <div class="row inline">
+        <label>Gender <span class="req">*</span></label>
+        <div class="radios">
+          <label class="radio"><input type="radio" formControlName="gender" value="Male" /> Male</label>
+          <label class="radio"><input type="radio" formControlName="gender" value="Female" /> Female</label>
+        </div>
+        <div class="err" *ngIf="form.get('gender')?.touched && form.get('gender')?.invalid">
+          <span>Gender is required</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="checkbox">
+          <input type="checkbox" formControlName="hasHobby" /> I have a hobby
+        </label>
+      </div>
+
+      <div class="row" *ngIf="showHobby()">
+        <label>Hobby <span class="req">*</span></label>
+        <input formControlName="hobby" placeholder="Enter hobby" />
+        <div class="err" *ngIf="form.get('hobby')?.touched && form.get('hobby')?.invalid">
+          <span *ngIf="form.get('hobby')?.errors?.['required']">Hobby required</span>
+          <span *ngIf="form.get('hobby')?.errors?.['minlength']">Min 2 chars</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <label>Favourite Subject</label>
+        <select formControlName="favouriteSubject" aria-label="Favourite Subject">
+          <option value="">Select Subject (optional)</option>
+          <option *ngFor="let s of subjects" [value]="s">{{ s }}</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" type="submit" [disabled]="saving">{{ saving ? 'Saving…' : 'Save' }}</button>
+        <button class="btn ghost" type="button" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

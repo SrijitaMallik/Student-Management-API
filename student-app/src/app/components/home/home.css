@@ -1,0 +1,84 @@
+:root{
+  --bg-1: #9dc3ff;
+  --bg-2: #f7fbff;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --primary: #0ea5e9;
+  --primary-2: #0369a1;
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(2,6,23,0.06);
+  --maxw: 1200px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:#0b1220}
+
+.app-layout{display:flex;min-height:100vh;gap:20px}
+.sidebar{
+  width:220px;
+  background:linear-gradient(180deg, #f3fbff, #e8f7ff);
+  border-right:1px solid rgba(6,30,60,0.03);
+  padding:22px 16px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+.title{font-weight:800;color:var(--primary-2);font-size:18px}
+
+.side-nav{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.nav-item{display:block;padding:12px 14px;border-radius:10px;color:var(--primary-2);text-decoration:none;font-weight:700}
+.nav-item.active{background:rgba(14,165,233,0.12);box-shadow:0 6px 18px rgba(3,105,161,0.04)}
+
+.main{flex:1;padding:28px;display:flex;flex-direction:column;gap:18px;align-items:center}
+.header-row{max-width:var(--maxw);width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.page-title{margin:0;font-size:28px;color:var(--primary-2)}
+.subtitle{margin:4px 0 0;color:var(--muted);font-size:13px}
+
+.card{max-width:var(--maxw);width:100%;background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border:1px solid rgba(3,105,161,0.04)}
+.students-table{width:100%;border-collapse:collapse;font-size:15px}
+.students-table thead th{background:linear-gradient(90deg,#eef9ff,#f8fbff);padding:14px;text-align:left;color:var(--primary-2);font-weight:700;border-bottom:1px solid rgba(6,30,60,0.05)}
+.students-table td{padding:14px;border-bottom:1px solid rgba(6,30,60,0.03);vertical-align:middle;color:#0b1220 !important}
+.students-table tbody tr:hover td{background:linear-gradient(90deg,rgba(14,165,233,0.03),transparent)}
+
+.pill {
+  background: #e8f1ff;
+  color: #003078 !important;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-block;
+  min-width: 70px;
+  text-align: center;
+  border: 1px solid #c9ddff;
+  box-shadow: 0 2px 6px rgba(3,105,161,0.06);
+  line-height: 1.2;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+.pill:hover{ background:#d7e8ff; border-color:#a9c9ff; color:#00254f !important; }
+
+.no-data{padding:40px;text-align:center;color:var(--muted);font-size:15px}
+.btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+.btn.primary{background:linear-gradient(90deg,var(--primary),var(--primary-2));color:#fff}
+.btn.secondary{background:#f1f5f9;color:var(--primary-2);border:1px solid rgba(3,105,161,0.06)}
+
+.page-footer{max-width:var(--maxw);width:100%;display:flex;justify-content:space-between;color:var(--muted);font-size:13px;padding:8px 0}
+
+@media (max-width:980px){
+  .sidebar{display:none}
+  .app-layout{padding:12px}
+  .main{padding:18px}
+}
+@media (max-width:640px){
+  .header-row{flex-direction:column;align-items:flex-start;gap:10px}
+  .students-table thead{display:none}
+  .students-table tr{display:block;margin-bottom:12px;border-radius:10px;border:1px solid rgba(6,30,60,0.03);overflow:hidden}
+  .students-table td{display:flex;justify-content:space-between;padding:12px}
+  .students-table td::before{content:attr(data-label);font-weight:700;color:#475569;margin-right:8px}
+  .pill,.tag{font-size:12px;padding:6px 8px}
+}

@@ -1,0 +1,196 @@
+/* ======== COLOR SYSTEM ======== */
+:root {
+  --bg-light: #eef4ff;
+  --bg-light-2: #e6f0ff;
+  --card: #ffffff;
+  --primary: #2563eb;       /* Deep Blue */
+  --primary-light: #3b82f6; /* Lighter Blue */
+  --text-dark: #0f172a;
+  --muted: #6b7280;
+
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.06);
+  font-family: Inter, system-ui, -apple-system;
+}
+
+/* GLOBAL */
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg-light), var(--bg-light-2));
+  color: var(--text-dark);
+}
+
+/* ======== MAIN LAYOUT ======== */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  gap: 18px;
+}
+
+/* ======== SIDEBAR ======== */
+.sidebar {
+  width: 230px;
+  background: linear-gradient(180deg, #f0f6ff, #e0edff);
+  padding: 26px 18px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+  border-right: 1px solid rgba(0,0,0,0.05);
+  border-radius: 0 18px 18px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* Sidebar Links */
+.side-nav {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-item {
+  padding: 12px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #1e3a8a;
+  transition: 0.2s ease;
+}
+
+.nav-item:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.nav-item.active {
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--primary);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+}
+
+/* ======== MAIN RIGHT CONTENT ======== */
+.main {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* ======== STUDENT TABLE ======== */
+.card {
+  width: 100%;
+  background: var(--card);
+  padding: 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.students-table thead th {
+  background: linear-gradient(90deg, #e6eefc, #f5f8ff);
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.students-table td {
+  padding: 14px;
+  border-bottom: 1px solid #e6e9f5;
+}
+
+/* Class Pill */
+.pill {
+  background: #dbe7ff;
+  color: #1e40af;
+  padding: 6px 16px;
+  font-weight: 600;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Subject Tag */
+.tag {
+  background: #eff6ff;
+  color: #1e3a8a;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+/* ======== FORM PAGE ======== */
+.input-box, select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px solid #dbe1ff;
+  background: #f9fbff;
+  font-size: 15px;
+}
+
+.input-box:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #ffffff;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  color: white;
+}
+
+.btn.primary:hover {
+  filter: brightness(1.1);
+}
+
+.btn.secondary {
+  background: #eef3ff;
+  color: var(--primary);
+  border: 1px solid #cddaff;
+}
+
+.btn.secondary:hover {
+  background: #e1e9ff;
+}
